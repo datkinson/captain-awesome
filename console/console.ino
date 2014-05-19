@@ -20,12 +20,52 @@ int lastFireButtonState = LOW;
 long lastDebounceTime = 0;
 long debounceDelay = 50;
 
+// define a struct to contain all of the button information
+typedef struct
+  {
+      int pin;
+      int previousState;
+      int currentState;
+  }  button_states;
+
+button_states buttons[5];
+  
 void setup() {
   pinMode(fireButtonPin, INPUT);
   pinMode(ledPin, OUTPUT);
 
   // set initial LED state
   digitalWrite(ledPin, ledState);
+  
+  
+  
+  
+// initialise the button pins
+  // fire button
+  buttons[0].pin = 22;
+  buttons[0].previousState = LOW;
+  buttons[0].currentState = LOW;
+
+  // shield 1 button
+  buttons[1].pin = 23;
+  buttons[1].previousState = LOW;
+  buttons[1].currentState = LOW;
+  
+  // shield 2 button
+  buttons[2].pin = 24;
+  buttons[2].previousState = LOW;
+  buttons[2].currentState = LOW;
+  
+  // shield 3 button
+  buttons[3].pin = 25;
+  buttons[3].previousState = LOW;
+  buttons[3].currentState = LOW;
+  
+  // shield 4 button
+  buttons[4].pin = 26;
+  buttons[4].previousState = LOW;
+  buttons[4].currentState = LOW;
+  
 }
 
 void loop() {
