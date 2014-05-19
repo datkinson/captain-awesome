@@ -22,13 +22,23 @@ long debounceDelay = 50;
 
 // define a struct to contain all of the button information
 typedef struct
-  {
-      int pin;
-      int previousState;
-      int currentState;
-  }  button_states;
+{
+  int pin;
+  int previousState;
+  int currentState;
+} button_states;
 
 button_states buttons[5];
+
+typedef struct
+{
+  int pin_one;
+  int pin_two;
+  int pin_three;
+  int power;
+} power_states;
+
+power_states power[3];
   
 void setup() {
   pinMode(fireButtonPin, INPUT);
@@ -66,6 +76,24 @@ void setup() {
   buttons[4].previousState = LOW;
   buttons[4].currentState = LOW;
   
+//  initialise power sockets
+  // shields
+  power[0].pin_one = 30;
+  power[0].pin_two = 31;
+  power[0].pin_three = 32;
+  power[0].power = 0;
+  
+  // propulsion
+  power[1].pin_one = 33;
+  power[1].pin_two = 34;
+  power[1].pin_three = 35;
+  power[1].power = 0;
+  
+  // weapons
+  power[2].pin_one = 36;
+  power[2].pin_two = 37;
+  power[2].pin_three = 38;
+  power[2].power = 0;
 }
 
 void loop() {
