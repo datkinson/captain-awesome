@@ -133,3 +133,19 @@ void loop() {
   lastFireButtonState = reading;
 }
 
+void update_power() {
+  for (int iteration = 0; iteration < sizeof(power) - 1; iteration++){
+    int temp_power = 0;
+    if (digitalRead(power[iteration].pin_one) == HIGH){
+      temp_power++;
+    }
+    if (digitalRead(power[iteration].pin_two) == HIGH){
+      temp_power++;
+    }
+    if (digitalRead(power[iteration].pin_three) == HIGH){
+      temp_power++;
+    }
+    power[iteration].power = temp_power;
+  }
+}
+
