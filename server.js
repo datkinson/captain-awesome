@@ -8,13 +8,9 @@ connect().use(connect.static(__dirname)).listen(8080);
 //  baudrate: 9600
 //});
 
-//Only register the listeners when it's okay to do so.
-//serialPort.on("open", function () {
-	//Web sockets lolwot
-	io.sockets.on('connection', function (socket) {
-    socket.on('cmd', function (data) {
-      console.log(data);
-      serialPort.write(data);
-    });
+io.sockets.on('connection', function (socket) {
+  socket.emit('news', { hello: 'world' });
+  socket.on('my other event', function (data) {
+    console.log(data);
   });
-//});
+});

@@ -6,26 +6,23 @@
 	<script>
 	var host = window.location.host;
 	var socket = io.connect('http://'+host+':1337');
+  socket.on('news', function (data) {
+    console.log(data);
+    socket.emit('my other event', { my: 'data' });
+  });
 
-		function writeMessage(canvas, message) {
-			var context = canvas.getContext('2d');
-			context.clearRect(0, 0, canvas.width, canvas.height);
-			context.font = '18pt Calibri';
-			context.fillStyle = 'black';
-			context.fillText(message, 10, 25);
+  function sendSocket(data, delay){
+		if(debounce < delay){
+			debounce++;
+		}else{
+			debounce = 0;
+			socket.emit('cmd', data);
+			console.log(data);
 		}
-		function sendSocket(data, delay){
-			if(debounce < delay){
-				debounce++;
-			}else{
-				debounce = 0;
-				socket.emit('cmd', data);
-				console.log(data);
-			}
-		}
-	</script>
+	}
+  </script>
 </head>
 <body>
-  <p>Captian Awesome</p>
+  <p>Captain Awesome</p>
 </body>
 </html>
