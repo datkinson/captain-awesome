@@ -1,0 +1,31 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<script src="node_modules/socket.io/node_modules/socket.io-client/dist/socket.io.js"></script>
+	<title>Captain Awesome</title>
+	<script>
+	var host = window.location.host;
+	var socket = io.connect('http://'+host+':1337');
+
+		function writeMessage(canvas, message) {
+			var context = canvas.getContext('2d');
+			context.clearRect(0, 0, canvas.width, canvas.height);
+			context.font = '18pt Calibri';
+			context.fillStyle = 'black';
+			context.fillText(message, 10, 25);
+		}
+		function sendSocket(data, delay){
+			if(debounce < delay){
+				debounce++;
+			}else{
+				debounce = 0;
+				socket.emit('cmd', data);
+				console.log(data);
+			}
+		}
+	</script>
+</head>
+<body>
+  <p>Captian Awesome</p>
+</body>
+</html>

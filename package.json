@@ -9,7 +9,8 @@
   },
   "dependencies": {
     "socket.io": ">= 0",
-    "serialport": ">= 0"
+    "serialport": ">= 0",
+    "connect": ">= 0"
   },
   "author": "Daniel atkinson",
   "license": "MIT"
