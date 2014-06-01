@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1-rc2/jquery.min.js"></script>
+  <!--<script src="/socket.io/socket.io.js"></script>-->
+  <script src="node_modules/socket.io/node_modules/socket.io-client/socket.io.js"></script>
+  <script>
+    // open a connection to the serial server:
+    var socket = io.connect('http://localhost:1337');
+    var outputValue = false;    // value to send to the server
+    var recieveObject;
+
+     // when you get a serialdata event, do this:
+    socket.on('serialEvent', function (data) {
+        recieveObject = JSON.parse(data);
+        console.log(recieveObject);
+      textDisplay.innerHTML = data;
+    });
+
+
+  </script>
+
+  </head>
+  <body>
+      <h2>Captain Awesome</h2>
+  Controller state:
+  <div id="textDisplay">JSON will show up here</div>
+  </body>
+</html>

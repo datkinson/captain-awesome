@@ -1,0 +1,17 @@
+{
+  "name": "captain-awesome",
+  "version": "0.1.0",
+  "description": "Interactive application controlled via a hardware panel",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "socket.io": ">= 0",
+    "serialport": ">= 0",
+    "connect": ">= 0"
+  },
+  "author": "Daniel atkinson",
+  "license": "MIT"
+}
